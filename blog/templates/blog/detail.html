@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     {% load staticfiles %}
     <meta charset="utf-8">
@@ -25,52 +24,39 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link active" href="">Home</a>
-      <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+      <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+      <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
       <a class="nav-item nav-link" href="http://localhost:8000/admin/">Admin</a>
-      <a class="nav-item nav-link" href="{% static 'KC Steblay - Resume.pdf' %}">Resume</a>
+      <a class="nav-item nav-link" href="#">Resume</a>
     </div>
   </div>
 </nav>
     </header>
-
-    <main role="main">
-
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hey fool! I'm KC.</h1>
-          <p class="lead text-muted">Born and raised in Southern California, now living in San Francsico making sites and kicking ass.</p>
-          <p>
-            <a href="mailto:kc.steblay@gmail.com" class="btn btn-primary my-2">Email Me</a>
+    <div class="container">
+      <main role="main">
+        <p>
+            <a href="{% url 'allblogs' %}" class="btn btn-secondary my-2">Back to Blog</a>
 
           </p>
-          <img src="{% static 'kc.jpg' %}" class="img-fluid" />
-        </div>
-      </section>
 
-      <div class="album py-5 bg-light">
-        <div class="container">
+        <div class="card flex-md-row mb-4 shadow m-top">
+            <div class="card-body d-flex flex-column align-items-start">
+              <img class="card-img-top" src="{{ job.image.url }}" />
+              <h3 class="mb-0">
+                {{ blog.title }}
+              </h3>
+              <div class="mb-1 text-muted">{{ blog.pub_date_pretty }}</div>
+              
+              <img class="img-fluid rounded" height=600 width=600 src="{{ blog.image.url }}" />
+              
+              <p class="card-text mb-auto">{{ blog.body }}</p>
 
-          <div class="row">
-
-          	{% for job in jobs.all %}
-
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow shadow">
-                <img class="card-img-top" src="{{ job.image.url }}" />
-                <div class="card-body">
-                  <p class="card-text">{{ job.summary }}</p>
-                </div>
-              </div>
             </div>
-
-            {% endfor %}
-
+            
           </div>
-        </div>
-      </div>
 
-    </main>
+      </main>
+   <div/>
 
     <footer class="text-muted">
       <div class="container">
@@ -82,8 +68,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
   </body>
 </html>
