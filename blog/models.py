@@ -7,7 +7,9 @@ from django.db import models
 # Add to the admin
 
 class Blog(models.Model):
+	header_image = models.ImageField(upload_to='images/', null=True) #title
 	image = models.ImageField(upload_to='images/', null=True) #title
+	tag = models.CharField(max_length=100, null=True) #title
 	pub_date = models.DateTimeField(null=True) #publish date
 	title = models.CharField(max_length=255, null=True) #title
 	body = models.TextField(null=True) #body
@@ -20,3 +22,6 @@ class Blog(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	class Meta:
+		ordering = ['-pub_date',]

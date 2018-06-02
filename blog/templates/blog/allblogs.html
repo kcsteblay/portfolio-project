@@ -39,25 +39,28 @@
 	    	<h2>Latest Posts</h2>
 	    	<hr />
 
+        <div class="row mb-2">
+
 	    	{% for blog in blog.all %}
 
-	    	<div class="card flex-md-row mb-4 shadow">
+          <div class="col-md-6">
+          <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
-              <img class="card-img-top" src="{{ job.image.url }}" />
+              <strong class="d-inline-block mb-2 text-primary">{{ blog.tag }}</strong>
               <h3 class="mb-0">
-                {{ blog.title }}
+                <a class="text-dark" href="{% url 'detail' blog.id %}">{{ blog.title }}</a>
               </h3>
               <div class="mb-1 text-muted">{{ blog.pub_date_pretty }}</div>
-              
-              <img class="img-fluid rounded" height=600 width=600 src="{{ blog.image.url }}" />
-              
               <p class="card-text mb-auto">{{ blog.summary }}</p>
               <a href="{% url 'detail' blog.id %}">Continue reading</a>
             </div>
-            
+            <img class="card-img-right flex-auto d-none d-lg-block" height=350 width=250 style="object-fit:cover" src="{{ blog.image.url }}" alt="Card image cap">
+          </div>
           </div>
 
           {% endfor %}
+
+          </div>
 
 	    </main>
 	 <div/>
