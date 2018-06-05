@@ -25,8 +25,8 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
       <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
-      <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
-      <a class="nav-item nav-link" href="{% url 'gallery' %}">Gallery</a>
+      <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+      <a class="nav-item nav-link active" href="{% url 'gallery' %}">Gallery</a>
       <a class="nav-item nav-link" href="https://www.linkedin.com/in/kc-steblay-cpa-2301b253/">Resume</a>
     </div>
   </div>
@@ -35,40 +35,16 @@
     <div class="container">
 	    <main role="main">
 
+        {% for gallery in gallery.all %}
 
-	    	<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark" style="background-image:url('{% static 'bus.jpg' %}');background-size:cover; background-repeat: no-repeat;" >
-        <div class="col-md-6 px-0">
-          <h1 class="display-4 font-italic" style="text-shadow: 2px 2px black">Blog</h1>
-          <p class="lead my-3"></p>
-          <p class="lead mb-0"><a href="#" class="text-white font-weight-bold"></a></p>
-          <br><br><br><br><br><br><br><br><br><br>
-        </div>
-        </div>
-
-
-        <div class="row mb-2">
-
-	    	{% for blog in blog.all %}
-
-          <div class="col-md-6">
-          <div class="card flex-md-row mb-4 box-shadow h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-              <strong class="d-inline-block mb-2 text-primary">{{ blog.tag }}</strong>
-              <h3 class="mb-0">
-                <a class="text-dark" href="{% url 'detail' blog.id %}">{{ blog.title }}</a>
-              </h3>
-              <div class="mb-1 text-muted">{{ blog.pub_date_pretty }}</div>
-              <p class="card-text mb-auto">{{ blog.summary }}</p>
-              <a href="{% url 'detail' blog.id %}">Continue reading</a>
+            <div class="col-md-3 ">
+              <div class="card mb-4 box-shadow shadow">
+                <img class="card-img-top" src="{{ gallery.image.url }}" />
+              </div>
             </div>
-            <img class="card-img-right flex-auto d-none d-lg-block" height=350 width=250 style="object-fit:cover" src="{{ blog.image.url }}" alt="Card image cap">
-          </div>
-          </div>
 
-          {% endfor %}
-
-          </div>
-
+        {% endfor %}
+	    	
 	    </main>
 	 <div/>
 

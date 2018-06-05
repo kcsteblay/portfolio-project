@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['138.68.58.77','localhost']
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'jobs.apps.JobsConfig',
+    'gallery.apps.GalleryConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
